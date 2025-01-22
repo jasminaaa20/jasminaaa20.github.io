@@ -1,6 +1,3 @@
-// Create a new file called js/form-validation.js and add this content:
-
-// Get the form element
 const form = document.getElementById('contact-form');
 
 // Validation helper functions
