@@ -1,4 +1,3 @@
-// Get the form element
 const form = document.getElementById('contact-form');
 
 // Validation helper functions
