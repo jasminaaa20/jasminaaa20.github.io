@@ -713,24 +713,6 @@
 		<!-- Add the form validation script -->
 		<script src="js/form-validation.js"></script>
 
-		<script type="text/javascript">
-			document.getElementById("contact-form").addEventListener("submit", function (event) {
-					event.preventDefault();
-					emailjs
-							.sendForm("service_4yt0m5s", "template_8f6cwre", this)
-							.then(
-									function () {
-											alert("Message sent successfully!");
-									},
-									function (error) {
-											alert("Failed to send the message. Please try again.");
-											console.error(error);
-									}
-							);
-			});
-		</script>
-
-
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery-migrate-3.0.1.min.js"></script>
 		<script src="js/popper.min.js"></script>
