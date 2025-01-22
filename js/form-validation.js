@@ -1,3 +1,4 @@
+// Get the form element
 const form = document.getElementById('contact-form');
 
 // Validation helper functions
@@ -83,25 +84,28 @@ const validateForm = () => {
     return isValid;
 };
 
-// Add event listener for form submission
-form.addEventListener('submit', function(event) {
+// Single form submission handler
+const handleSubmit = async (event) => {
     event.preventDefault();
     
-    if (validateForm()) {
-        // If validation passes, send email using EmailJS
-        emailjs.sendForm("service_4yt0m5s", "template_8f6cwre", this)
-            .then(
-                function() {
-                    alert("Message sent successfully!");
-                    form.reset(); // Clear the form after successful submission
-                },
-                function(error) {
-                    alert("Failed to send the message. Please try again.");
-                    console.error(error);
-                }
-            );
+    // First validate the form
+    if (!validateForm()) {
+        return false; // Stop if validation fails
     }
-});
+    
+    try {
+        // If validation passes, send email using EmailJS
+        await emailjs.sendForm("service_4yt0m5s", "template_8f6cwre", form);
+        alert("Message sent successfully!");
+        form.reset(); // Clear the form after successful submission
+    } catch (error) {
+        alert("Failed to send the message. Please try again.");
+        console.error(error);
+    }
+};
+
+// Add single event listener for form submission
+form.addEventListener('submit', handleSubmit);
 
 // Add real-time validation on input
 const inputs = form.querySelectorAll('input, textarea');
